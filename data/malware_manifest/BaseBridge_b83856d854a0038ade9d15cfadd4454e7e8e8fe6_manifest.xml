@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.hyxen.taximeter.app">
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <application android:icon="@drawable/taxiicon_ok" android:label="@string/app_name" android:name="com.hyxen.app.taximeter.MyApp">
+        <activity android:label="@string/app_name" android:name="com.hyxen.app.taximeter.TaxiCalculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hyxen.app.taximeter.TaxiRecorder"/>
+        <activity android:name="com.hyxen.app.taximeter.TaxiResultDisplayer"/>
+        <activity android:name="com.hyxen.app.taximeter.TaxiAbout"/>
+    </application>
+</manifest>

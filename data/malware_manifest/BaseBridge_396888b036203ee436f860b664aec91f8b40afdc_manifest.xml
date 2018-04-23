@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="fahrbot.apps.rootcallblocker.pro">
+    <supports-screens android:anyDensity="true" android:resizeable="true"/>
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:name="fahrbot.apps.rootcallblocker.pro.RootCallBlockerPro">
+        <service android:name="fahrbot.apps.rootcallblocker.utils.CallBlockerService">
+            <intent-filter>
+                <action android:name="CallBlockerService.ACTION_APPLY_PROFILE"/>
+                <action android:name="CallBlockerService.ACTION_APPLY_END"/>
+                <action android:name="CallBlockerService.ACTION_CHECK_SCHEDULES"/>
+            </intent-filter>
+        </service>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.CallBlockerPreferences"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.CallLogListActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.BlackListActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.DefaultPreferences"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.WhiteListActivity"/>
+        <activity android:excludeFromRecents="true" android:launchMode="singleInstance" android:name="fahrbot.lib.log.CrashReportActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.ProfilesPreferencesActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.ProfilePreferenceActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.base.TextActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.SupportActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.SchedulingActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.SchedulePreferenceActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.ProfileSelectActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.MainActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:excludeFromRecents="true" android:launchMode="singleInstance" android:name="fahrbot.apps.rootcallblocker.ui.CallLogActivity"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.HiddenModePreferences"/>
+        <activity android:excludeFromRecents="true" android:name="fahrbot.apps.rootcallblocker.ui.ContactListActivity"/>
+        <receiver android:name="fahrbot.apps.rootcallblocker.utils.DaemonBroadcastReceiver">
+            <intent-filter>
+                <action android:name="fahrbot.daemon.phone.CALL_BLOCKED"/>
+                <action android:name="fahrbot.daemon.phone.LOOKUP_PHONE"/>
+                <action android:name="fahrbot.daemon.phone.STARTED"/>
+                <action android:name="fahrbot.daemon.phone.STOPPED"/>
+                <action android:name="fahrbot.daemon.phone.CRASHED"/>
+                <action android:name="fahrbot.daemon.phone.NEW_SMS"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+</manifest>

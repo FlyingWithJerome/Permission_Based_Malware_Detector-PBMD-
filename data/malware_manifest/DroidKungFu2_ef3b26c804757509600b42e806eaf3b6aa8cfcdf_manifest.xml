@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.tutusw.onekeyvpn">
+    <application android:icon="@drawable/logo" android:label="@string/app_name">
+        <activity android:label="@string/openvpn_settings_category" android:name="OpenVpnSettings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/advanced_settings_category" android:name="AdvancedSettings"/>
+        <activity android:label="@string/edit_config_category" android:name="EditConfig"/>
+        <activity android:label="@string/edit_config_preferences_category" android:name="EditConfigPreferences"/>
+        <activity android:label="@string/enter_passphrase_category" android:name="EnterPassphrase"/>
+        <activity android:label="@string/enter_user_password_category" android:name="EnterUserPassword"/>
+        <activity android:label="Import Files" android:name="ImportFiles"/>
+        <service android:enabled="true" android:exported="false" android:label="@string/openvpn_service" android:name="com.tutusw.onekeyvpn.service.OpenVpnService"/>
+        <receiver android:name="com.tutusw.onekeyvpn.util.BootCompletedReceiver" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+</manifest>

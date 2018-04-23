@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.adobe.reader">
+    <application android:icon="@drawable/icon" android:label="@string/IDS_APP_NAME">
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/IDS_APP_NAME" android:launchMode="singleTask" android:name=".AdobeReader" android:screenOrientation="user" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/pdf"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ARAboutActivity" android:theme="@style/aboutDialogTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".ARFileOpen" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".ARPortfolioUI" android:theme="@android:style/Theme.NoTitleBar"/>
+    </application>
+</manifest>

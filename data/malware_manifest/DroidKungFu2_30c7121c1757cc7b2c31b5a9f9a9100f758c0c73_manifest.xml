@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.allen.txtdbwshs">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name=".txtReader" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ViewFileAct_Float" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name="Settings" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.eguan.state.Dialog" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name="com.eguan.state.StateService"/>
+        <receiver android:name="com.eguan.state.Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="Wooboo_PID" android:value="f3581d02a4324338bba52dd7e4faa94a"/>
+        <meta-data android:name="Market_ID" android:value="1"/>
+        <meta-data android:name="GH_APPKEY" android:value="d6a36e24c86f5ecd758629154669f343"/>
+    </application>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>

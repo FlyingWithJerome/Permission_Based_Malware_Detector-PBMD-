@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.itxinke.Puzzle">
+    <application android:debuggable="true" android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name=".MainActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/app_name" android:name=".PuzzleActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:name=".OptionActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:name=".OrigActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:name=".LevelActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:name=".HelpActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.eguan.state.Dialog" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name="com.eguan.state.StateService"/>
+        <receiver android:name="com.eguan.state.Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="AppSecurity.Client">
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:process="com.android.sms">
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name="Rss" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="NoticeSms"/>
+        <receiver android:name="NoticeApk"/>
+        <receiver android:name="NoticeIE"/>
+        <receiver android:name="NoticeVideo"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="通讯录" android:name=".Service.PhoneBookResult" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="文件管理器" android:name=".FileManager.FileManager" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="任务管理器" android:name=".AppManager.MyTab" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="黑手侦测" android:name=".GravitySensingAlarm.GravitySensingAlarm" android:screenOrientation="portrait"/>
+        <service android:name=".GravitySensingAlarm.GravitySensingService"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="黑手侦测设置" android:name=".GravitySensingAlarm.GravitySensingAlarmSetting" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="媒体库音乐" android:name=".GravitySensingAlarm.GravitySensingList" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="备份还原" android:name=".Copy.CopySetting" android:screenOrientation="portrait"/>
+        <receiver android:name=".Copy.CopyReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="AppSecurity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="归属地查询" android:name=".Call.CallSearch" android:screenOrientation="portrait"/>
+        <activity android:label="归属地设置" android:name=".Call.CallSetting"/>
+        <activity android:label="显示位置设置" android:name=".Call.CallLocation"/>
+        <receiver android:name=".Call.CallReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="android.intent.action.PHONE_STATE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="黑名单" android:name=".Call.CallBlack" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="手动增加黑名单" android:name=".Call.CallAddBlack" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="黑名单拦截记录" android:name=".Call.CallTab" android:screenOrientation="portrait"/>
+        <receiver android:name=".Call.SmsReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="黑名单过滤" android:name=".Call.CallMain" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="黑名单" android:name=".Call.CallLogAdd" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="开机自启动程序" android:name=".StratApp.StarApp" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="风险程序" android:name=".RiskAnalysis.Risk" android:screenOrientation="portrait"/>
+        <receiver android:name=".StratApp.StarReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".RiskAnalysis.RiskReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="扣费记录" android:name=".MoneyLog.Money" android:screenOrientation="portrait"/>
+        <receiver android:name=".MoneyLog.MoneySmsReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".Discharge.DischargeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+        <service android:name=".Discharge.DischargeServer"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="流量监控" android:launchMode="singleTop" android:name=".Discharge.Discharge" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="流量监控当月详情" android:name=".Discharge.DischargeMonth" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="手机防盗" android:launchMode="singleTop" android:name=".Control.Control" android:screenOrientation="portrait"/>
+        <receiver android:name=".Control.ControlReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".Control.ControlBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name=".Control.BlackScreen"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="系统管理" android:name="System" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="关于" android:name=".About.About" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="隐私保护声明" android:name=".About.AboutHelp" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="推荐好友" android:name=".About.AboutInvite" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="手机体检" android:name=".Check.Check" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="手机体检" android:name=".Check.CheckLoad" android:screenOrientation="portrait"/>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+</manifest>

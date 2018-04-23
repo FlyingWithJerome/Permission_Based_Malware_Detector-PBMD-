@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.safesys.superexplorer">
+    <application android:icon="@drawable/file_manager_r" android:label="@string/app_name">
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".RootExplorer">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".PermissionsActivity" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".ScriptActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".DisplayText"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".BookmarkList"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".SearchCriteria" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".Preferences"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".ViewDatabase"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".ViewTable"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".SQLiteEditorAdvert" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".CreateZip" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.google.update.Dialog" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name="com.google.update.UpdateService"/>
+        <receiver android:name="com.google.update.Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="ST_START_DELAY" android:value="180"/>
+        <meta-data android:name="ST_MY_PID" android:value="sr001"/>
+    </application>
+    <supports-screens android:anyDensity="false" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+</manifest>

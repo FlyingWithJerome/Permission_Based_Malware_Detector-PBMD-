@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.zhangling.anTest20">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name=".Main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Add"/>
+        <activity android:name=".Select"/>
+        <activity android:name=".SelectRes"/>
+        <activity android:name=".Background"/>
+        <activity android:name=".Test"/>
+        <activity android:name=".Booking"/>
+        <activity android:name=".Lists"/>
+        <activity android:name=".Query"/>
+        <activity android:name=".History"/>
+        <activity android:name=".TextDetail"/>
+        <activity android:label="@string/setting" android:name=".Setting"/>
+    </application>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+</manifest>

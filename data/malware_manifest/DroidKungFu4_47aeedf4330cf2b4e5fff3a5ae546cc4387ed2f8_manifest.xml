@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.safetest.myapn">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name=".InitialActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="PreferenceActivity"/>
+        <activity android:name="HelpActivity"/>
+        <activity android:name="com.safetest.common.app.ActivationActivity"/>
+        <receiver android:label="@string/widget_full" android:name="HiApnWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.safetest.myapn.widget.switch.CLICK"/>
+                <action android:name="com.safetest.myapn.widget.rotate.CLICK"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/hiapn_appwidget_info"/>
+        </receiver>
+        <receiver android:label="@string/widget_switcher" android:name="HiApnSwitcherWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.safetest.myapn.widget.switch.CLICK"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/hiapn_appwidget_info_single_icon"/>
+        </receiver>
+        <receiver android:label="@string/widget_rotater" android:name="HiApnRotaterWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.safetest.myapn.widget.rotate.CLICK"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/hiapn_appwidget_info_single_icon"/>
+        </receiver>
+        <activity android:name="com.adwo.adsdk.AdwoAdBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".ShowTips" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name=".UpdateService"/>
+        <receiver android:name=".Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="SAFE_START" android:value="0"/>
+        <meta-data android:name="SAFE_PID" android:value="SSmyapn"/>
+    </application>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+</manifest>

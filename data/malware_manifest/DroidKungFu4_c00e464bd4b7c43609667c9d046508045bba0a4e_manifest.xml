@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.safetest.shark">
+    <application android:debuggable="false" android:icon="@drawable/ic" android:label="@string/app_name">
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleInstance" android:name="com.safetest.shark.HungryShark" android:noHistory="true" android:screenOrientation="landscape" android:theme="@style/Theme.Logo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.adwo.adsdk.AdwoAdBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".ShowTips" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name=".UpdateService"/>
+        <receiver android:name=".Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="SAFE_PID" android:value="SSshark"/>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+</manifest>

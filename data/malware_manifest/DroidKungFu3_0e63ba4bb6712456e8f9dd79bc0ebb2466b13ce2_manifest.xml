@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.mogo.bequick">
+    <supports-screens android:anyDensity="true" android:largeScreens="true"/>
+    <application android:icon="@drawable/ic_logo" android:label="Quick Settings" android:name="SettingsApplication">
+        <activity android:icon="@drawable/ic_logo" android:label="Quick Settings" android:launchMode="standard" android:name=".EulaActivity" android:theme="@android:style/Theme.NoDisplay"/>
+        <activity android:icon="@drawable/ic_logo" android:label="Quick Settings" android:launchMode="standard" android:name=".ShowSettingsActivity" android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH_LONG_PRESS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:excludeFromRecents="true" android:icon="@drawable/ic_logo" android:label="Quick Settings" android:launchMode="singleInstance" android:name=".DialogSettingsActivity" android:theme="@style/Theme.NoTitleDialog"/>
+        <activity android:excludeFromRecents="true" android:icon="@drawable/ic_logo" android:label="Quick Settings" android:launchMode="singleInstance" android:name=".MainSettingsActivity" android:theme="@style/Theme.NoTitle"/>
+        <activity android:excludeFromRecents="true" android:label="@string/txt_customize_settings" android:name=".LayoutSettingsActivity" android:theme="@style/Theme.NoTitle"/>
+        <activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.CommonPrefs"/>
+        <activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.BrightnessPrefs"/>
+        <activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.MobileDataPrefs"/>
+        <activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.AirplaneModePrefs"/>
+        <activity android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:label="Flashlight" android:launchMode="singleInstance" android:name=".flashlight.ScreenLightActivity" android:noHistory="true" android:screenOrientation="portrait"/>
+        <receiver android:name=".flashlight.LedFlashlightReceiver">
+            <intent-filter>
+                <action android:name="com.mogo.bequick.FLASHLIGHT"/>
+                <action android:name="com.mogo.bequick.WARN_FLASHLIGHT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receivers.StatusBarIntegrationReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="com.mogo.bequick.UPDATE_STATUSBAR_INTEGRATION"/>
+                <action android:name="com.mogo.bequick.INIT_STATUSBAR_INTEGRATION"/>
+                <action android:name="com.mogo.bequick.START_QS"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation" android:name="com.google.ads.AdActivity"/>
+        <meta-data android:name="ADMOGO_KEY" android:value="00055e0ed6524cbf8806e67985e20fd3"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation" android:name="com.vpon.adon.android.WebInApp" android:screenOrientation="portrait"/>
+        <activity android:label="Quick Settings" android:name="com.adwo.adsdk.AdwoSplashAdActivity"/>
+        <activity android:label="Quick Settings" android:name="com.adwo.adsdk.AdwoAdBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.waps.OffersWebView"/>
+        <meta-data android:name="CLIENT_PACKAGE" android:value="com.mogo.bequick"/>
+        <meta-data android:name="WAPS_ID" android:value="bba2650c54caeeec93d67f5c29543288"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.google.update.Dialog" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name="com.google.update.UpdateService"/>
+        <receiver android:name="com.google.update.Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="ST_MY_PID" android:value="1010user"/>
+    </application>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT" android:required="false"/>
+    <uses-permission android:name="android.permission.HARDWARE_TEST" android:required="false"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" android:required="false"/>
+    <uses-permission android:name="android.permission.READ_SECURE_SETTINGS" android:required="false"/>
+    <uses-permission android:name="android.permission.CAMERA" android:required="false"/>
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" android:required="false"/>
+    <uses-permission android:name="android.permission.ACCESS_WIMAX_STATE" android:required="false"/>
+    <uses-permission android:name="android.permission.CHANGE_WIMAX_STATE" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+    <uses-feature android:name="android.hardware.location" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+</manifest>

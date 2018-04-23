@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" package="com.appsgeyser.wWindowsHotmail">
+    <application android:icon="@drawable/icon" android:label=" Windows Hotmail">
+        <activity android:configChanges="keyboardHidden|orientation" android:label=" Windows Hotmail" android:launchMode="singleTask" android:name=".MainNavigationActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:excludeFromRecents="true" android:label="AppsgeyserApp message" android:name=".MessageViewer"/>
+        <service android:name="com.appsgeyser.wWindowsHotmail.Server.C2DMClientReceiver"/>
+        <receiver android:name="com.google.android.c2dm.C2DMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.appsgeyser.wWindowsHotmail"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="com.appsgeyser.wWindowsHotmail"/>
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.webkit.permission.PLUGIN"/>
+    <permission android:name="com.appsgeyser.wWindowsHotmail.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.appsgeyser.wWindowsHotmail.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+</manifest>

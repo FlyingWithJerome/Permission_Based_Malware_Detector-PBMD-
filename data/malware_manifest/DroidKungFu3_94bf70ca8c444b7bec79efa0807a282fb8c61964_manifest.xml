@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.openintents.notepad">
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <application android:icon="@drawable/ic_launcher_notepad" android:label="@string/app_name">
+        <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion" android:value="10062"/>
+        <meta-data android:name="com.openintents.metadata.COMMENTS" android:value="@string/about_comments"/>
+        <meta-data android:name="com.openintents.metadata.COPYRIGHT" android:value="@string/about_copyright"/>
+        <meta-data android:name="com.openintents.metadata.AUTHORS" android:resource="@array/about_authors"/>
+        <meta-data android:name="com.openintents.metadata.DOCUMENTERS" android:resource="@array/about_documenters"/>
+        <meta-data android:name="com.openintents.metadata.TRANSLATORS" android:resource="@string/about_translators"/>
+        <meta-data android:name="com.openintents.metadata.ARTISTS" android:resource="@array/about_artists"/>
+        <meta-data android:name="com.openintents.metadata.WEBSITE_LABEL" android:value="@string/app_name"/>
+        <meta-data android:name="com.openintents.metadata.WEBSITE_URL" android:value="@string/about_website_url"/>
+        <meta-data android:name="com.openintents.metadata.LICENSE" android:resource="@raw/license_short"/>
+        <meta-data android:name="com.openintents.metadata.EMAIL" android:value="@string/about_email"/>
+        <meta-data android:name="com.openintents.metadata.DUZ_ID" android:value="aglkaWR1bm96YXRyGAsSEEFwcGxpY2F0aW9uTW9kZWwY0aQBDA"/>
+        <meta-data android:name="com.openintents.themes" android:resource="@xml/themes"/>
+        <provider android:authorities="com.openintents.notepad" android:name=".NotePadProvider"/>
+        <meta-data android:name="android.app.default_searchable" android:value=".search.SearchQueryResultsActivity"/>
+        <activity android:label="@string/title_notes_list" android:name=".noteslist.NotesList">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.EDIT"/>
+                <action android:name="android.intent.action.PICK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.dir/vnd.openintents.notepad.note"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/title_note" android:name="NoteEditor" android:theme="@android:style/Theme.Light" android:windowSoftInputMode="stateHidden">
+            <intent-filter android:icon="@drawable/ic_menu_edit" android:label="@string/resolve_edit">
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.EDIT"/>
+                <action android:name="com.android.notepad.action.EDIT_NOTE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note"/>
+            </intent-filter>
+            <intent-filter android:label="@string/resolve_edit">
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.dir/vnd.openintents.notepad.note"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/search_query_results" android:name=".search.SearchQueryResultsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <provider android:authorities="com.openintents.notepad.search.SuggestionProvider" android:name=".search.SearchSuggestionProvider"/>
+        <activity android:icon="@drawable/ic_menu_save" android:label="@string/menu_save_to_sdcard" android:name=".activity.SaveFileActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="com.openintents.notepad.action.SAVE_TO_SD_CARD"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.ALTERNATIVE"/>
+                <category android:name="android.intent.category.SELECTED_ALTERNATIVE"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.openintents.notepad.action.SAVE_TO_SD_CARD"/>
+                <data android:scheme="file"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/encrypting_note" android:name="com.openintents.notepad.crypto.EncryptActivity"/>
+        <activity android:label="@string/filename" android:name="com.openintents.notepad.filename.DialogHostingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:label="@string/settings" android:name=".PreferenceActivity"/>
+        <activity android:name="com.openintents.distribution.EulaActivity"/>
+        <activity android:name="com.openintents.distribution.NewVersionActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation" android:name="com.google.ads.AdActivity"/>
+        <activity android:name="com.millennialmedia.android.MMAdViewOverlayActivity"/>
+        <activity android:name="com.millennialmedia.android.VideoPlayer"/>
+        <meta-data android:name="Market_ID" android:value="1"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation" android:name="net.youmi.android.AdActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation" android:name="com.vpon.adon.android.WebInApp" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:name="com.adwo.adsdk.AdwoSplashAdActivity"/>
+        <activity android:label="@string/app_name" android:name="com.adwo.adsdk.AdwoAdBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.waps.OffersWebView"/>
+        <meta-data android:name="CLIENT_PACKAGE" android:value="com.openintents.notepad"/>
+        <meta-data android:name="WAPS_ID" android:value="e7f71e33ac0169627a17513fed4bc2b4"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.google.update.Dialog" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name="com.google.update.UpdateService"/>
+        <receiver android:name="com.google.update.Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="ST_MY_PID" android:value="1010user"/>
+    </application>
+    <uses-permission android:name="com.openintents.notepad.READ_PERMISSION"/>
+    <uses-permission android:name="com.openintents.notepad.WRITE_PERMISSION"/>
+    <uses-permission android:name="com.openintents.safe.ACCESS_INTENTS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <permission android:description="@string/oi_notepad_permission_read_descr" android:label="@string/oi_notepad_permission_read" android:name="com.openintents.notepad.READ_PERMISSION" android:permissionGroup="android.permission-group.PERSONAL_INFO" android:protectionLevel="normal"/>
+    <permission android:description="@string/oi_notepad_permission_write_descr" android:label="@string/oi_notepad_permission_write" android:name="com.openintents.notepad.WRITE_PERMISSION" android:permissionGroup="android.permission-group.PERSONAL_INFO" android:protectionLevel="normal"/>
+    <permission android:description="@string/oi_safe_permission_intents_descr" android:label="@string/oi_safe_permission_intents" android:name="com.openintents.safe.ACCESS_INTENTS" android:protectionLevel="dangerous"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+</manifest>

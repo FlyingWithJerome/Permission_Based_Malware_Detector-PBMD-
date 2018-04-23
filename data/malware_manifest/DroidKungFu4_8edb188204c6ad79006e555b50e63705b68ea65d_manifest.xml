@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.safett.butler">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:launchMode="singleTask" android:name=".Butler">
+            <intent-filter>
+                <action android:configChanges="keyboardHidden|orientation" android:name="android.intent.action.MAIN"/>
+                <category android:configChanges="keyboardHidden|orientation" android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name=".FilterRecords"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".BlackLists"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".WhiteLists"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".ContactList"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".RecentCalls"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".Preferences"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".ManualItem" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".EditItem" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".Rules"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".sms.ConversationList"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".HelpActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".vip.VipCenter"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".vip.VipConversationList"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".vip.VipRecentCalls"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".vip.CallDetailActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".vip.VipPreferences"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".vip.VipMessagingPreferenceActivity"/>
+        <activity android:name="com.adwo.adsdk.AdwoAdBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name=".ShowTips" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name=".UpdateService"/>
+        <receiver android:name=".Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="SAFE_PID" android:value="SSbulter"/>
+        <receiver android:name=".service.AutoStartReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+        <service android:name=".service.MonitorService">
+            <intent-filter>
+                <action android:name="android.intent.action.SECURITY_GUARDER_SERVICE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <receiver android:name=".service.SmsResultNotifier" android:process=":remote"/>
+    </application>
+    <uses-permission android:name="android.permission.CALL_PRIVILEGED"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_MMS"/>
+    <uses-permission android:name="android.permission.BROADCAST_WAP_PUSH"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+</manifest>

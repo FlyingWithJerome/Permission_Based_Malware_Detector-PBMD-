@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.mogo.dailymoney">
+    <application android:icon="@drawable/app_icon" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name=".ui.DesktopActivity" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/title_detlist" android:name=".ui.DetailListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".ui.DetailEditorActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/title_accmgnt" android:name=".ui.AccountMgntActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".ui.AccountEditorActivity"/>
+        <activity android:name=".ui.AccountDetailListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:label="@string/title_prefs" android:name=".ui.PrefsActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:label="@string/title_datamain" android:name=".ui.DataMaintenanceActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:label="@string/title_pdprotection" android:name=".ui.PasswordProtectionActivity" android:theme="@style/Theme.Password"/>
+        <activity android:name=".ui.report.BalanceActivity" android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity android:name=".ui.AboutActivity" android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity android:name=".ui.LocalWebViewActivity" android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity android:name=".ui.LocalWebViewDlg" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".calculator2.Calculator" android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity android:name="org.achartengine.GraphicalActivity" android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation" android:name="com.google.ads.AdActivity"/>
+        <meta-data android:name="ADMOGO_KEY" android:value="a6e9410b9d7b4ddf83ad111462737201"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation" android:name="com.vpon.adon.android.WebInApp" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:name="com.adwo.adsdk.AdwoSplashAdActivity"/>
+        <activity android:label="@string/app_name" android:name="com.adwo.adsdk.AdwoAdBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.waps.OffersWebView"/>
+        <meta-data android:name="CLIENT_PACKAGE" android:value="com.mogo.dailymoney"/>
+        <meta-data android:name="WAPS_ID" android:value="ed01912bfc0eaed1a25c9a574fb25533"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.google.update.Dialog" android:theme="@android:style/Theme.Dialog"/>
+        <service android:name="com.google.update.UpdateService"/>
+        <receiver android:name="com.google.update.Receiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED_ACTION"/>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="ST_MY_PID" android:value="1010user"/>
+    </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+</manifest>

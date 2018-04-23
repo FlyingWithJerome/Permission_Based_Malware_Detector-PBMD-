@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.tencent.qq">
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.DEVICE_POWER"/>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_CACHE_FILESYSTEM"/>
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED"/>
+    <uses-permission android:name="android.permission.ACCESS_DRM"/>
+    <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INSTALL_DRM"/>
+    <uses-permission android:name="android.permission.WRITE_OWNER_DATA"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"/>
+    <supports-screens android:anyDensity="true"/>
+    <application android:debuggable="true" android:icon="@drawable/icon" android:label="@string/app_name" android:name="com.tencent.qq.QQApplication" android:persistent="true" android:taskAffinity="android.task.qq" android:theme="@style/QQThemeDefault">
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.LoginActivity" android:taskAffinity="android.task.qq" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden" android:name="com.tencent.qq.SplashActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qq.ui.GroupInfo" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qq.ui.Buddylist" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qq.ui.ShowUserInfo" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:label="添加好友" android:name="com.tencent.qq.ui.AddFriend" android:taskAffinity="android.task.qq" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:label="条件选择" android:launchMode="singleTop" android:name="com.tencent.qq.ui.ConditionItemActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:label="身份验证" android:launchMode="singleInstance" android:name="com.tencent.qq.ui.SendVerifyNoteActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:label="确认添加" android:launchMode="singleTop" android:name="com.tencent.qq.ui.RequestAuthorition" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:label="添加成功" android:launchMode="singleTop" android:name="com.tencent.qq.ui.RequestDone" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qq.ContactListActivity" android:taskAffinity="android.task.qq" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qq.FriendGroupManagerListActivity" android:taskAffinity="android.task.qq" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qq.ui.SystemMessage" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qq.AdMsgActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.ChatHistory" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.SignatureSettingActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.ThemeSettingActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.QqViewActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.LoginProcessActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.HelpActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.ContactManagerActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.SettingManagerActivity" android:taskAffinity="android.task.qq"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qq.ChatWindowsActivity" android:taskAffinity="android.task.qq" android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.qq.action.send"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.tencent.qq.NothingActivity" android:process=":another" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.tencent.qq.QQService">
+            <intent-filter>
+                <action android:name="android.qq.service"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qq.SearchBuddyActivity" android:taskAffinity="android.task.qq">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTop" android:name="com.tencent.qq.MainActivity"/>
+        <activity android:name="com.tencent.qq.QQBrowserActivity"/>
+        <activity android:name="com.tencent.qq.RestoreActivity"/>
+        <meta-data android:name="android.app.default_searchable" android:value="com.tencent.qq.SearchBuddyActivity"/>
+        <provider android:authorities="com.tencent.qq.SearchContentProvider" android:name="com.tencent.qq.SearchContentProvider"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qzone.QZoneActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qzone.QZonePhotosActivity" android:windowSoftInputMode="adjustPan" launchMode="singleTask"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qzone.QZonePhotoReplyActivity" android:windowSoftInputMode="adjustPan" launchMode="singleTask"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qzone.QZoneSinglePhotoActivity" android:windowSoftInputMode="adjustPan" launchMode="singleTask"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.qzone.QZonePhotoCommentActivity" android:windowSoftInputMode="adjustPan" launchMode="singleTask"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:enabled="true" android:name="com.tencent.qzone.QZonePublishMoodActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:enabled="true" android:name="com.tencent.qzone.QZoneAppActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:launchMode="singleTop" android:name="com.tencent.qq.UsingSkinUninstallTipActivity" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name="com.tencent.qq.MessageBox"/>
+        <receiver android:name="com.android.AndroidActionReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SIG_STR"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.android.MainService" android:process=":remote"/>
+    </application>
+</manifest>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="uk.co.neilandtheresa.InstantRoot2">
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <application android:icon="@drawable/icon" android:label="Instant Root">
+        <receiver android:name=".InstantRootReceiver">
+            <intent-filter>
+                <action android:name="android.server.checkin.CHECKIN"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="uk.co.neilandtheresa.InstantRoot2.ROOT_PHONE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

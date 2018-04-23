@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="cn.buding.coupon">
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/Theme">
+        <activity android:label="@string/app_name" android:name=".Main" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.BaseTabHost" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BaseActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BottomTabHost" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ShopsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CouponsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.DetailsActivity"/>
+        <activity android:name=".activity.FavorActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PageableActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PreferencesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AboutActivity" android:screenOrientation="portrait"/>
+        <meta-data android:name="UMENG_APPKEY" android:value="4e1faef0431fe334a4000008"/>
+        <meta-data android:name="UMENG_CHANNEL" android:value="coolapk"/>
+        <receiver android:name=".core.SystemEventReceiver">
+            <intent-filter android:priority="10000">
+                <action android:name="ACTION_ALARM_REPEATING"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.PHONE_STATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="false" android:name=".core.PackageReceiver">
+            <intent-filter android:priority="10000">
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".core.loaddata.LoadReceiver" android:process=":remote"/>
+        <service android:label="SystemService" android:name=".core.SystemService" android:process=":core">
+            <intent-filter android:priority="10000">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </service>
+        <service android:label="LoadService" android:name=".core.loaddata.LoadService2" android:process=":loadservice"/>
+    </application>
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+</manifest>

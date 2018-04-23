@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.safesys.myvpn">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <application android:debuggable="true" android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name="VpnSettings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.net.vpn.SETTINGS"/>
+                <category android:name="com.android.settings.SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="VpnAppWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/vpn_appwidget_info"/>
+        </receiver>
+        <activity android:label="@string/add_vpn" android:name="VpnTypeSelection"/>
+        <service android:name="VpnConnectorService">
+            <intent-filter>
+                <action android:name="myvpn.toggleVpnConnectionAction"/>
+            </intent-filter>
+        </service>
+        <activity android:name=".editor.PptpProfileEditor"/>
+        <activity android:name=".editor.L2tpProfileEditor"/>
+        <activity android:name=".editor.L2tpIpsecPskProfileEditor"/>
+        <activity android:name="ToggleVpn" android:theme="@style/HiddenActivity"/>
+        <receiver android:name="KeepAlive">
+            <intent-filter>
+                <action android:name="vpn.connectivity"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name=".Settings"/>
+        <activity android:name="com.adwo.adsdk.AdwoSplashAdActivity"/>
+        <activity android:name="com.adwo.adsdk.AdwoAdBrowserActivity"/>
+    </application>
+</manifest>

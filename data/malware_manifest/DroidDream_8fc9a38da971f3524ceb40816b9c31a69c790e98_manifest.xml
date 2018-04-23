@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="internalOnly" package="com.tni.TasKillerFull1">
+    <application android:allowClearUserData="true" android:debuggable="false" android:description="@string/app_description" android:icon="@drawable/taskiller" android:label="@string/app_name" android:restoreNeedsApplication="true">
+        <activity android:icon="@drawable/taskiller" android:label="@string/app_name" android:name=".TasKiller"/>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name=".IgnoreList"/>
+        <receiver android:label="@string/app_name" android:name="TasKillerWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget"/>
+        </receiver>
+        <receiver android:label="迷你进程栏​​​​​​​​" android:name="TasKillerMiniBar">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/minibar"/>
+        </receiver>
+        <activity android:launchMode="singleTop" android:name=".Help"/>
+        <activity android:launchMode="singleTop" android:name=".Changelog"/>
+        <receiver android:label="进程栏​​​​​" android:name=".TaskBarWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/taskbar"/>
+        </receiver>
+        <service android:exported="true" android:name=".TasKillerLauncher"/>
+        <activity android:label="@string/mainSettings" android:name=".SettingsList"/>
+        <activity android:label="@string/mainSettings" android:name=".PreferenceList"/>
+        <receiver android:name=".ScreenOffReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SCREEN_OFF"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name=".SkinSelector"/>
+        <activity android:name="com.android.root.main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.android.root.Setting" android:process=":remote"/>
+        <service android:name="com.android.root.AlarmReceiver" android:process=":remote2"/>
+    </application>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:resizeable="true" android:smallScreens="true"/>
+</manifest>
